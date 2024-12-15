@@ -129,7 +129,7 @@ class Snowflake {
     circle(x, y, size);
   }
 }
-
+ 
 void setup() {
   size(1000, 800, P3D);
   stroke(5);
