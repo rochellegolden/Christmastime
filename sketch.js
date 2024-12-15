@@ -335,7 +335,10 @@ function reportWindowSize() {
 }
 window.onresize = reportWindowSize;
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-if (isMobile || typeof screen.orientation !== 'undefined') {
-  isSantaFlying = true;
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile || typeof screen.orientation !== 'undefined') {
+    isSantaFlying = true;
+  }
+  
+});
