@@ -187,22 +187,18 @@ function draw() {
     y += random(-5, 5);
   }
   fill(255); // White text
-
-
   text(message, x, y);
   // hint(ENABLE_DEPTH_TEST);
 }
 
-/*function*/
-
-function keyPressed(a, b) {
+function keyPressed() {
   if (audioP == false) {
     audio = document.getElementById('backgroundMusic');
     audio.play();
     audioP = true;
   }
   console.log(key, keyCode);
-  if (key == 's' || key == 'S' || b == true) {
+  if (key == 's' || key == 'S') {
     santaX = -720;
     santaY = -parseInt(window.outerHeight * .25);
     isSantaFlying = true;
@@ -332,10 +328,6 @@ class GingerbreadMan {
 
   }
 
-
-
-
-
 }
 
 function reportWindowSize() {
@@ -344,6 +336,6 @@ function reportWindowSize() {
 window.onresize = reportWindowSize;
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-if (isMobile) {
-  setInterval(keyPressed(0, true), 5000);
+if (isMobile || typeof screen.orientation !== 'undefined') {
+  isSantaFlying = true;
 }
