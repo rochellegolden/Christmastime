@@ -23,6 +23,8 @@ let x, y; // X and Y coordinates of text
 let hr, vr; // horizontal and vertical radius of the text
 let snowflakes = new Array(200);
 let WorkSans;
+let audioP = false;
+let audio = document.getElementById('backgroundMusic');
 
 function preload() {
 
@@ -194,6 +196,11 @@ function draw() {
 /*function*/
 
 function keyPressed() {
+  if (audioP == false) {
+    audio = document.getElementById('backgroundMusic');
+    audio.play();
+    audioP = true;
+  }
   console.log(key, keyCode);
   if (key == 's' || key == 'S') {
     santaX = -720;
@@ -226,11 +233,24 @@ function keyPressed() {
   santaSpeed = constrain(santaSpeed, 0.5, 10); // Keep speed within reasonable limits
 }
 
+
 function mouseDragged() {
+
+  if (audioP == false) {
+    audio = document.getElementById('backgroundMusic');
+    audio.play();
+    audioP = true;
+  }
   rotationY += (mouseX - pmouseX) * 0.01;
 }
 
 function mousePressed() {
+
+  if (audioP == false) {
+    audio = document.getElementById('backgroundMusic');
+    audio.play();
+    audioP = true;
+  }
   // Only add new gingerbread men if under the limit
   if (gingerbreadMen.length > MAX_GINGERBREAD_MEN) {
     for (i = 0; i < 3; i++) {
@@ -322,8 +342,3 @@ function reportWindowSize() {
   setup();
 }
 window.onresize = reportWindowSize;
-
-document.addEventListener('DOMContentLoaded', function () {
-  const audio = document.getElementById('backgroundMusic');
-  audio.play();
-});
