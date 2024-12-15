@@ -203,7 +203,7 @@ function keyPressed() {
     santaX = -720;
     santaY = -parseInt(window.outerHeight * .25);
     if (isMobile == true) {
-      santaY = -parseInt(window.outerHeight * .5);
+      santaY = -parseInt(window.outerHeight * .4);
     }
     isSantaFlying = true;
     console.log("Santa started flying: " + isSantaFlying);
