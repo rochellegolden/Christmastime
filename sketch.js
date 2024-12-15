@@ -1,3 +1,4 @@
+let isMobile = false;
 let christmasvillage, elf, santa, gingerbreadMan;
 let gingerbreadMen = 1;
 const MAX_GINGERBREAD_MEN = 15; // Added missing constant
@@ -62,7 +63,7 @@ function setup() {
 
 
   // Setup for tickle text
-  textSize(20);
+  textSize(16);
   textAlign(CENTER, CENTER);
   hr = textWidth(message) / 2;
   vr = (textAscent() + textDescent()) / 2;
@@ -201,6 +202,9 @@ function keyPressed() {
   if (key == 's' || key == 'S') {
     santaX = -720;
     santaY = -parseInt(window.outerHeight * .25);
+    if (isMobile == true) {
+      santaY = -parseInt(window.outerHeight * .5);
+    }
     isSantaFlying = true;
     console.log("Santa started flying: " + isSantaFlying);
   }
@@ -336,9 +340,10 @@ function reportWindowSize() {
 window.onresize = reportWindowSize;
 
 document.addEventListener('DOMContentLoaded', function () {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   if (isMobile || typeof screen.orientation !== 'undefined') {
     isSantaFlying = true;
+    isMobile = true;
   }
-  
+
 });
