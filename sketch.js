@@ -195,14 +195,14 @@ function draw() {
 
 /*function*/
 
-function keyPressed() {
+function keyPressed(a, b) {
   if (audioP == false) {
     audio = document.getElementById('backgroundMusic');
     audio.play();
     audioP = true;
   }
   console.log(key, keyCode);
-  if (key == 's' || key == 'S') {
+  if (key == 's' || key == 'S' || b == true) {
     santaX = -720;
     santaY = -parseInt(window.outerHeight * .25);
     isSantaFlying = true;
@@ -342,3 +342,8 @@ function reportWindowSize() {
   setup();
 }
 window.onresize = reportWindowSize;
+
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  setInterval(keyPressed(0, true), 5000);
+}
