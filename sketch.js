@@ -19,20 +19,22 @@ let santaZ = 50;
 let spin = 0;
 let lastBounceTime = 0; // Added for bounce sound control
 // Tickle text variables
-let message = "Help the elf deliver gifts by pressing a, q and j. Press S to see Santa!";
+let message = "Merry Christmas From the Creative Coding Class at PCC!";
+let message2 = "";
 let x, y; // X and Y coordinates of text
 let hr, vr; // horizontal and vertical radius of the text
 let snowflakes = new Array(200);
-let WorkSans;
+let PTSerif;
 let audioP = false;
 let audio = document.getElementById('backgroundMusic');
-
+let pcclogo;
 function preload() {
 
   console.log("Loading images...");
   christmasvillage = loadImage("Data/Christmasvillage.png");
   elf = loadImage("Data/Elf.png");
   santa = loadImage("Data/Santa.png");
+  pcclogo = loadImage("Data/PCCLogo.png");
   // Check if images loaded successfully
   if (christmasvillage == null) {
     console.log("ERROR: Christmasvillage.png not found!");
@@ -57,13 +59,13 @@ function preload() {
 function setup() {
   createCanvas(window.outerWidth, window.outerHeight, WEBGL);
   stroke(5);
-  WorkSans = loadFont("Data/WorkSans-Medium.ttf");
-  textFont(WorkSans);
+  PTSerif = loadFont("Data/PTSerif-Regular.ttf");
+  textFont(PTSerif);
 
 
 
   // Setup for tickle text
-  textSize(16);
+  textSize(48);
   textAlign(CENTER, CENTER);
   hr = textWidth(message) / 2;
   vr = (textAscent() + textDescent()) / 2;
@@ -187,9 +189,16 @@ function draw() {
     x += random(-5, 5);
     y += random(-5, 5);
   }
-  fill(255); // White text
-  text(message, x, y);
+  fill(255,255,255); // White text
+  text(message, window.outerWidth/2-width/2, y+160);
+  textSize(48);
+  fill(255,0,0);
+  text(message, window.outerWidth/2-width/2+2, y+162);
+  textSize(48);
   // hint(ENABLE_DEPTH_TEST);
+
+
+  image(pcclogo, window.outerWidth/2-width/2-114, y-70, 228, 60);
 }
 
 function keyPressed() {
